@@ -1,0 +1,10 @@
+/* Animasi pindah slide: slide baru muncul dengan zoom dari kecil. Durasi diatur lewat --dur di variables.css. */
+@keyframes slide-masuk{from{opacity:0;transform:scale(.88)}to{opacity:1;transform:scale(1)}}
+
+@media (prefers-reduced-motion:reduce){
+  :root{--dur:150ms}
+  .slide:target,.deck:not(:has(.slide:target)) #slide-1{animation-name:fade-masuk}
+  .btn,.menu-item{transition:none}
+  .btn:hover:not(:disabled),.menu-item:hover{transform:none}
+}
+@keyframes fade-masuk{from{opacity:0}to{opacity:1}}

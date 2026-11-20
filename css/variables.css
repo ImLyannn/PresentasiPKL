@@ -1,0 +1,34 @@
+/* Palet, font, dan skala ukuran. Ubah di sini untuk menyesuaikan tampilan. */
+:root{
+  --c-bg:#F6F4EF;
+  --c-ink:#22251F;
+  --c-muted:#7A7A74;
+  --c-line:#DEDBD3;
+  --c-blue:#2650DB;
+  --c-lav:#E4DFF1;
+  --c-yel:#F2E6AE;
+  --c-peri:#E0E6F6;
+  --c-sage:#DDE8DC;
+  --c-peach:#F0D6C5;
+  --c-white:#FFFFFF;
+
+  --font-title:"Instrument Serif","Iowan Old Style","Palatino Linotype",Georgia,serif;
+  --font-body:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+
+  /* satuan skala: 1u ≈ 1% lebar slide pada rasio desain (~1.54:1) */
+  --u:clamp(5px,min(1vw,1.54vh),13px);
+  --fs-xs:max(10.5px,calc(var(--u)*.92));
+  --fs-sm:max(12px,calc(var(--u)*1.1));
+  --fs-body:max(13px,calc(var(--u)*1.22));
+  --fs-h3:max(18px,calc(var(--u)*2.15));
+  --fs-quote:max(22px,calc(var(--u)*3.3));
+  --fs-h2:max(30px,calc(var(--u)*4.5));
+  --fs-hero:max(40px,calc(var(--u)*6.9));
+
+  --px:clamp(16px,4.8vw,57px);
+  --py:clamp(12px,3.2vh,26px);
+  --gap:clamp(10px,1.7vw,20px);
+  --r:clamp(12px,1.5vw,18px);
+  --dur:650ms;
+  --ease:cubic-bezier(.22,.8,.24,1);
+}

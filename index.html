@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Presentasi PKL</title>
+  <link rel="icon" type="image/png" href="assets/images/favicon.png">
+  <!-- Font opsional (Instrument Serif + Inter). Jika offline, font sistem dipakai. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Inter:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/presentation.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+  <!--
+    CARA MENGEDIT (tanpa JavaScript)
+    1. Teks      : cari tulisan [dalam kurung siku] lalu ganti langsung di file ini.
+    2. Warna     : ubah data-tone="..." pada kartu (lav, yel, peri, sage, peach, blue, white).
+    3. Pindah    : tombol dan kartu memakai tautan <a href="#slide-N">. Ubah angka N untuk mengubah tujuannya.
+    4. Ikon      : ganti nama pada <use href="#i-nama">. Pilihan: book, list, image, columns, route, chart,
+                   notebook, flag, bulb, eye, sparkle, chat, grid, arrowLeft, arrowRight, arrowUpRight.
+    5. Gambar    : pada slide 5, ganti isi <figure class="figure-box"> dengan <img src="assets/images/nama.png" alt="...">
+                   dan tambahkan class has-image pada figure tersebut.
+    6. Posisi kartu menu (slide 2) diatur di css/components.css pada baris .menu-card:nth-child(...).
+    7. Durasi animasi: variabel --dur di css/variables.css.
+    JavaScript (js/tambahan.js) hanya untuk tombol layar penuh dan tombol panah keyboard.
+  -->
+
+    <svg class="sprite" aria-hidden="true" focusable="false">
+      <symbol id="i-arrowRight" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+      <symbol id="i-arrowUpRight" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></symbol>
+      <symbol id="i-book" viewBox="0 0 24 24"><path d="M3 5h7a2 2 0 0 1 2 2v12a2 2 0 0 0-2-2H3z"/><path d="M21 5h-7a2 2 0 0 0-2 2v12a2 2 0 0 1 2-2h7z"/></symbol>
+      <symbol id="i-list" viewBox="0 0 24 24"><path d="M9 6h11M9 12h11M9 18h11M4 6h.01M4 12h.01M4 18h.01"/></symbol>
+      <symbol id="i-image" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="9" cy="9" r="1.6"/><path d="m4 18 5-5 4 4 3-3 4 4"/></symbol>
+      <symbol id="i-columns" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M12 4v16"/></symbol>
+      <symbol id="i-route" viewBox="0 0 24 24"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><path d="M8.5 6H15a3 3 0 0 1 0 6H9a3 3 0 0 0 0 6h6.5"/></symbol>
+      <symbol id="i-chart" viewBox="0 0 24 24"><path d="M6 20v-6M12 20V6M18 20v-10"/></symbol>
+      <symbol id="i-notebook" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M2 7h3M2 12h3M2 17h3"/></symbol>
+      <symbol id="i-flag" viewBox="0 0 24 24"><path d="M5 21V4M5 4h13l-2.5 4.5L18 13H5"/></symbol>
+      <symbol id="i-arrowLeft" viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></symbol>
+      <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></symbol>
+      <symbol id="i-bulb" viewBox="0 0 24 24"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></symbol>
+      <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3.5-6.5 10-6.5S22 12 22 12s-3.5 6.5-10 6.5S2 12 2 12z"/><circle cx="12" cy="12" r="2.8"/></symbol>
+      <symbol id="i-sparkle" viewBox="0 0 24 24"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/><path d="M19 17v4M17 19h4"/></symbol>
+      <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 5h11a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H9l-4 3v-3H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/><path d="M19 9h1a1 1 0 0 1 1 1v8l-3-2.5h-6"/></symbol>
+    </svg>
+
+  <main id="deck" class="deck" aria-label="Presentasi">
+    <!-- ===== SLIDE 1 · Pembuka ===== -->
+    <section class="slide slide--cover" id="slide-1" aria-label="Slide 1 dari 10">
+      <header class="slide-header">
+        <div class="brand">
+          <span class="logo"><img src="assets/images/logo-sekolah.png" alt=""></span>
+          <span class="brand__name">SMK TI BALI GLOBAL DENPASAR</span>
+        </div>
+        <div class="room">RUANG PRESENTASI / XI RPL 1</div>
+        <div class="status">
+          <span class="status__dot"></span>
+          <span>Pembuka</span>
+        </div>
+      </header>
+      <div class="slide__main layout-cover">
+        <div class="cover__text">
+          <p class="kicker kicker--line">PRESENTASI SISWA</p>
+          <h1 class="slide__title cover__title">Presentasi PKL</h1>
+          <p class="cover__sub">Pengalaman Praktik Kerja Lapangan di CV Karya Pratama Perkasa (JPT Retailindo)</p>
+          <a class="btn" href="#slide-2">
+            <span>Selanjutnya</span>
+            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-arrowRight"></use></svg></span>
+          </a>
+        </div>
+        <div class="id-card" data-tone="lav">
+          <span class="id-card__dot"></span>
+          <p class="card-label">IDENTITAS PENYAJI</p>
+          <span class="logo">[Logo Sekolah]</span>
+          <p class="id-card__school">SMK TI BALI GLOBAL DENPASAR</p>
+          <div class="id-card__row">
+            <span>NAMA SISWA</span>
+            <span>[Nama Siswa]</span>
+          </div>
+          <div class="id-card__row">
+            <span>KELAS</span>
+            <span>XI RPL 1</span>
+          </div>
+          <div class="id-card__row">
+            <span>NIS</span>
+            <span>[NIS]</span>
+          </div>
+        </div>
+      </div>
+      <footer class="slide-footer">
+        <div class="footer__left">
+          <span class="footer__text">Disusun oleh [Nama Siswa]</span>
+        </div>
+        <div class="footer__count">01 — 10</div>
+        <div class="footer__right">
+          <span class="footer__text">Presentasi PKL</span>
+        </div>
+      </footer>
+    </section>
+
+    <!-- ===== SLIDE 2 · Menu (peta presentasi) ===== -->
+    <section class="slide slide--menu" id="slide-2" aria-label="Slide 2 dari 10">
+      <header class="slide-header">
+        <div class="brand">
+          <span class="logo"><img src="assets/images/logo-sekolah.png" alt=""></span>
+          <span class="brand__name">SMK TI BALI GLOBAL DENPASAR</span>
+        </div>
+        <div class="room">RUANG PRESENTASI / XI RPL 1</div>
+        <div class="status">
+          <span class="status__dot"></span>
+          <span>Jelajahi materi</span>
+        </div>
+      </header>
+      <div class="slide__main layout-menu">
+        <div class="menu__head">
+          <div>
+            <p class="kicker">PETA PRESENTASI</p>
+            <h2 class="slide__title">Mau mulai dari mana?</h2>
+          </div>
+          <p class="menu__hint">Pilih satu kartu untuk menjelajahi materi.
+Setiap topik punya ruangnya sendiri.</p>
+        </div>
+        <div class="menu__board">
+          <a class="menu-card" data-tone="lav" href="#slide-3">
+            <span class="menu-card__top">
+              <span>Materi 01</span>
+              <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-arrowUpRight"></use></svg></span>
+            </span>
+            <span class="icon menu-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-book"></use></svg></span>
+            <span class="menu-card__label">Pengantar</span>
+          </a>
+          <a class="menu-card" data-tone="yel" href="#slide-4">
+            <span class="menu-card__top">
+              <span>Materi 02</span>
+              <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-arrowUpRight"></use></svg></span>
+            </span>
+            <span class="icon menu-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-list"></use></svg></span>
+            <span class="menu-card__label">Poin utama</span>
+          </a>
+          <a class="menu-card" data-tone="peri" href="#slide-5">
+            <span class="menu-card__top">
+              <span>Materi 03</span>
+              <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-arrowUpRight"></use></svg></span>
+            </span>
+            <span class="icon menu-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-image"></use></svg></span>
+            <span class="menu-card__label">Gambar &amp; caption</span>
+          </a>
+          <a class="menu-card" data-tone="sage" href="#slide-6">
+            <span class="menu-card__top">
+              <span>Materi 04</span>
+              <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-arrowUpRight"></use></svg></span>
+            </span>
+            <span class="icon menu-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-columns"></use></svg></span>
+            <span class="menu-card__label">Perbandingan</span>
+          </a>
+          <a class="menu-card" data-tone="sage" href="#slide-7">
+            <span class="menu-card__top">
+              <span>Materi 05</span>
+              <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-arrowUpRight"></use></svg></span>
+            </span>
+            <span class="icon menu-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-route"></use></svg></span>
+            <span class="menu-card__label">Tahapan</span>
+          </a>
+          <a class="menu-card" data-tone="peach" href="#slide-8">
+            <span class="menu-card__top">
+              <span>Materi 06</span>
+              <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-arrowUpRight"></use></svg></span>
+            </span>
+            <span class="icon menu-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-chart"></use></svg></span>
+            <span class="menu-card__label">Data ringkas</span>
+          </a>
+          <a class="menu-card" data-tone="lav" href="#slide-9">
+            <span class="menu-card__top">
+              <span>Materi 07</span>
+              <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-arrowUpRight"></use></svg></span>
+            </span>
+            <span class="icon menu-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-notebook"></use></svg></span>
+            <span class="menu-card__label">Rangkuman</span>
+          </a>
+          <a class="menu-card" data-tone="blue" href="#slide-10">
+            <span class="menu-card__top">
+              <span>Materi 08</span>
+              <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-arrowUpRight"></use></svg></span>
+            </span>
+            <span class="icon menu-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-flag"></use></svg></span>
+            <span class="menu-card__label">Penutup</span>
+          </a>
+        </div>
+      </div>
+      <footer class="slide-footer">
+        <div class="footer__left">
+          <a class="link" href="#slide-1">
+            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-arrowLeft"></use></svg></span>
+            <span>Kembali ke pembuka</span>
+          </a>
+        </div>
+        <div class="footer__count">02 — 10</div>
+        <div class="footer__right">
+          <span class="footer__text">Presentasi PKL</span>
+        </div>
+      </footer>
+    </section>
+
+    <!-- ===== SLIDE 3 · Materi 01 · Pengantar ===== -->
+    <section class="slide slide--hero" id="slide-3" aria-label="Slide 3 dari 10">
+      <header class="slide-header">
+        <div class="brand">
+          <span class="logo"><img src="assets/images/logo-sekolah.png" alt=""></span>
+          <span class="brand__name">SMK TI BALI GLOBAL DENPASAR</span>
+        </div>
+        <div class="room">RUANG PRESENTASI / XI RPL 1</div>
+        <div class="status">
+          <span class="status__dot"></span>
+          <span>Materi 01 / 08</span>
+        </div>
+      </header>
+      <div class="slide__main layout-hero">
+        <div class="titlebar">
+          <div class="titlebar__text">
+            <p class="kicker">MATERI 01 / PENGANTAR</p>
+            <h2 class="slide__title">[Judul Materi]</h2>
+            <p class="lead">[Kalimat pembuka untuk memperkenalkan topik kepada audiens]</p>
+          </div>
+          <span class="titlebar__num">01</span>
+        </div>
+        <div class="hero__body">
+          <div class="card hero__main" data-tone="blue">
+            <p class="card-label">GAGASAN PEMBUKA</p>
+            <p class="hero__idea">[Satu gagasan besar yang menjadi inti presentasi]</p>
+            <p class="hero__note">[Konteks singkat yang membantu audiens memahami mengapa topik ini dibahas]</p>
+          </div>
+          <div class="card hero__side" data-tone="sage">
+            <h3>Sebelum kita mulai</h3>
+            <div>
+              <p class="item-label">Latar belakang</p>
+              <p>[Situasi atau konteks awal topik]</p>
+            </div>
+            <div>
+              <p class="item-label">Tujuan pembahasan</p>
+              <p>[Hal yang ingin dipahami audiens]</p>
+            </div>
+            <div>
+              <p class="item-label">Pertanyaan pemantik</p>
+              <p>[Pertanyaan untuk membuka diskusi]</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer class="slide-footer">
+        <div class="footer__left">
+          <a class="link" href="#slide-2">
+            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-grid"></use></svg></span>
+            <span>Kembali ke menu</span>
+          </a>
+        </div>
+        <div class="footer__count">03 — 10</div>
+        <div class="footer__right">
+          <a class="btn btn--ghost" href="#slide-2">
+            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-arrowLeft"></use></svg></span>
+            <span>Menu</span>
+          </a>
+          <a class="btn" href="#slide-4">
+            <span>Selanjutnya</span>
+            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-arrowRight"></use></svg></span>
+          </a>
+        </div>
+      </footer>
+    </section>
+
+    <!-- ===== SLIDE 4 · Materi 02 · Poin utama ===== -->
+    <section class="slide slide--trio" id="slide-4" aria-label="Slide 4 dari 10">
+      <header class="slide-header">
+        <div class="brand">
+          <span class="logo"><img src="assets/images/logo-sekolah.png" alt=""></span>
+          <span class="brand__name">SMK TI BALI GLOBAL DENPASAR</span>
+        </div>
+        <div class="room">RUANG PRESENTASI / XI RPL 1</div>
+        <div class="status">
+          <span class="status__dot"></span>
+          <span>Materi 02 / 08</span>
+        </div>
+      </header>
+      <div class="slide__main layout-trio">
+        <div class="titlebar">
+          <div class="titlebar__text">
+            <p class="kicker">MATERI 02 / POIN UTAMA</p>
+            <h2 class="slide__title">[Judul Materi]</h2>
+            <p class="lead">[Pengantar singkat tentang tiga gagasan utama yang akan dijelaskan]</p>
+          </div>
+          <span class="titlebar__num">02</span>
+        </div>
+        <div class="trio__body">
+          <div class="card trio__card" data-tone="lav">
+            <div class="trio__top">
+              <span class="trio__letter">A</span>
+              <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-bulb"></use></svg></span>
+            </div>
+            <h3>[Poin utama pertama]</h3>
+            <p>[Penjelasan inti poin ini dalam dua atau tiga kalimat singkat]</p>
+            <p class="trio__note">[Contoh atau bukti pendukung]</p>
+          </div>
+          <div class="card trio__card" data-tone="yel">
+            <div class="trio__top">
+              <span class="trio__letter">B</span>
+              <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-eye"></use></svg></span>
+            </div>
+            <h3>[Poin utama kedua]</h3>
+            <p>[Penjelasan inti poin ini dalam dua atau tiga kalimat singkat]</p>
+            <p class="trio__note">[Contoh atau bukti pendukung]</p>
+          </div>
+          <div class="card trio__card" data-tone="sage">
+            <div class="trio__top">
+              <span class="trio__letter">C</span>
+              <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-sparkle"></use></svg></span>
+            </div>
+            <h3>[Poin utama ketiga]</h3>
+            <p>[Penjelasan inti poin ini dalam dua atau tiga kalimat singkat]</p>
+            <p class="trio__note">[Contoh atau bukti pendukung]</p>
+          </div>
+        </div>
+        <p class="thread"><b class="kicker">BENANG MERAH</b><span>[Hubungan singkat antara ketiga poin utama]</span></p>
+      </div>
+      <footer class="slide-footer">
+        <div class="footer__left">
+          <a class="link" href="#slide-2">
+            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-grid"></use></svg></span>
+            <span>Kembali ke menu</span>
+          </a>
+        </div>
+        <div class="footer__count">04 — 10</div>
+        <div class="footer__right">
+          <a class="btn btn--ghost" href="#slide-3">
+            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-arrowLeft"></use></svg></span>
+            <span>Sebelumnya</span>
+          </a>
+          <a class="btn" href="#slide-5">
+            <span>Selanjutnya</span>
+            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-arrowRight"></use></svg></span>
+          </a>
+        </div>
+      </footer>
+    </section>
+
+    <!-- ===== SLIDE 5 · Materi 03 · Gambar & caption ===== -->
+    <section class="slide slide--figure" id="slide-5" aria-label="Slide 5 dari 10">
+      <header class="slide-header">
+        <div class="brand">
+          <span class="logo"><img src="assets/images/logo-sekolah.png" alt=""></span>
+          <span class="brand__name">SMK TI BALI GLOBAL DENPASAR</span>
+        </div>
+        <div class="room">RUANG PRESENTASI / XI RPL 1</div>
+        <div class="status">
+          <span class="status__dot"></span>
+          <span>Materi 03 / 08</span>
+        </div>
+      </header>
+      <div class="slide__main layout-figure">
+        <div class="titlebar">
+          <div class="titlebar__text">
+            <p class="kicker">MATERI 03 / GAMBAR &amp; CAPTION</p>
+            <h2 class="slide__title">[Judul Materi]</h2>
+            <p class="lead">[Kalimat pengantar yang menghubungkan gambar dengan topik presentasi]</p>
+          </div>
+          <span class="titlebar__num">03</span>
+        </div>
+        <div class="fig__body">
+          <div class="fig__left">
+            <figure class="figure-box">
+              <span class="icon figure-box__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-image"></use></svg></span>
+              <p class="figure-box__title">[Gambar Materi]</p>
+              <p class="figure-box__hint">Ganti dengan foto, ilustrasi, atau diagram</p>
+            </figure>
+            <div class="fig__caption">
+              <b class="kicker">GAMBAR 01</b>
+              <span>[Caption yang menjelaskan isi gambar]</span>
+              <small>Sumber: [Sumber gambar / dokumentasi]</small>
+            </div>
+          </div>
+          <div class="fig__side">
+            <h3>Apa yang kita lihat?</h3>
+            <p>[Jelaskan objek, situasi, atau informasi penting yang terlihat pada gambar]</p>
+            <div class="callout">
+              <p class="card-label">PERHATIKAN</p>
+              <p>[Sorot satu detail yang paling relevan dengan pembahasan]</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer class="slide-footer">
+        <div class="footer__left">
+          <a class="link" href="#slide-2">
+            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-grid"></use></svg></span>
+            <span>Kembali ke menu</span>
+          </a>
+        </div>
+        <div class="footer__count">05 — 10</div>
+        <div class="footer__right">
+          <a class="btn btn--ghost" href="#slide-4">
+            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-arrowLeft"></use></svg></span>
+            <span>Sebelumnya</span>
+          </a>
+          <a class="btn" href="#slide-6">
+            <span>Selanjutnya</span>
+            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-arrowRight"></use></svg></span>
+          </a>
+        </div>
+      </footer>
+    </section>
+
+    <!-- ===== SLIDE 6 · Materi 04 · Perbandingan ===== -->
+    <section class="slide slide--compare" id="slide-6" aria-label="Slide 6 dari 10">
+      <header class="slide-header">
+        <div class="brand">
+          <span class="logo"><img src="assets/images/logo-sekolah.png" alt=""></span>
+          <span class="brand__name">SMK TI BALI GLOBAL DENPASAR</span>
+        </div>
+        <div class="room">RUANG PRESENTASI / XI RPL 1</div>
+        <div class="status">
+          <span class="status__dot"></span>
+          <span>Materi 04 / 08</span>
+        </div>
+      </header>
+      <div class="slide__main layout-compare">
+        <div class="titlebar">
+          <div class="titlebar__text">
+            <p class="kicker">MATERI 04 / PERBANDINGAN</p>
+            <h2 class="slide__title">[Judul Materi]</h2>
+            <p class="lead">[Jelaskan dua hal yang dibandingkan serta alasan perbandingannya]</p>
+          </div>
+          <span class="titlebar__num">04</span>
+        </div>
+        <div class="cmp__table">
+          <div class="cmp__col">
+            <div></div>
+            <div class="cmp__aspect">[Aspek pertama]</div>
+            <div class="cmp__aspect">[Aspek kedua]</div>
+            <div class="cmp__aspect">[Aspek ketiga]</div>
+          </div>
+          <div class="cmp__col" data-tone="lav">
+            <div class="cmp__head">
+              <b>A</b>
+              <span>[Objek / Konsep A]</span>
+            </div>
+            <div class="cmp__cell">[Penjelasan aspek pertama pada A]</div>
+            <div class="cmp__cell">[Penjelasan aspek kedua pada A]</div>
+            <div class="cmp__cell">[Penjelasan aspek ketiga pada A]</div>
+          </div>
+          <div class="cmp__col" data-tone="sage">
+            <div class="cmp__head">
+              <b>B</b>
+              <span>[Objek / Konsep B]</span>
+            </div>
+            <div class="cmp__cell">[Penjelasan aspek pertama pada B]</div>
+            <div class="cmp__cell">[Penjelasan aspek kedua pada B]</div>
+            <div class="cmp__cell">[Penjelasan aspek ketiga pada B]</div>
+          </div>
+        </div>
+        <p class="thread"><b class="kicker">KESIMPULAN</b><span>[Perbedaan atau persamaan terpenting dari kedua hal di atas]</span></p>
+      </div>
+      <footer class="slide-footer">
+        <div class="footer__left">
+          <a class="link" href="#slide-2">
+            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-grid"></use></svg></span>
+            <span>Kembali ke menu</span>
+          </a>
+        </div>
+        <div class="footer__count">06 — 10</div>
+        <div class="footer__right">
+          <a class="btn btn--ghost" href="#slide-5">
+            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-arrowLeft"></use></svg></span>
+            <span>Sebelumnya</span>
+          </a>
+          <a class="btn" href="#slide-7">
+            <span>Selanjutnya</span>
+            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-arrowRight"></use></svg></span>
+          </a>
+        </div>
+      </footer>
+    </section>
+
+    <!-- ===== SLIDE 7 · Materi 05 · Tahapan ===== -->
+    <section class="slide slide--steps" id="slide-7" aria-label="Slide 7 dari 10">
+      <header class="slide-header">
+        <div class="brand">
+          <span class="logo"><img src="assets/images/logo-sekolah.png" alt=""></span>
+          <span class="brand__name">SMK TI BALI GLOBAL DENPASAR</span>
+        </div>
+        <div class="room">RUANG PRESENTASI / XI RPL 1</div>
+        <div class="status">
+          <span class="status__dot"></span>
+          <span>Materi 05 / 08</span>
+        </div>
+      </header>
+      <div class="slide__main layout-steps">
+        <div class="titlebar">
+          <div class="titlebar__text">
+            <p class="kicker">MATERI 05 / TAHAPAN</p>
+            <h2 class="slide__title">[Judul Materi]</h2>
+            <p class="lead">[Pengantar alur, proses, atau urutan kegiatan yang akan dipaparkan]</p>
+          </div>
+          <span class="titlebar__num">05</span>
+        </div>
+        <div class="steps__ends">
+          <span>MULAI DARI SINI</span>
+          <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-arrowRight"></use></svg></span>
+          <span>HASIL AKHIR</span>
+        </div>
+        <div class="steps__grid">
+          <div class="card step" data-tone="lav">
+            <span class="step__n">01</span>
+            <h3>[Nama tahapan]</h3>
+            <p>[Jelaskan apa yang dilakukan dan tujuan tahapan ini]</p>
+            <p class="step__out">Luaran: [Hasil tahapan]</p>
+          </div>
+          <div class="card step" data-tone="peri">
+            <span class="step__n">02</span>
+            <h3>[Nama tahapan]</h3>
+            <p>[Jelaskan apa yang dilakukan dan tujuan tahapan ini]</p>
+            <p class="step__out">Luaran: [Hasil tahapan]</p>
+          </div>
+          <div class="card step" data-tone="sage">
+            <span class="step__n">03</span>
+            <h3>[Nama tahapan]</h3>
+            <p>[Jelaskan apa yang dilakukan dan tujuan tahapan ini]</p>
+            <p class="step__out">Luaran: [Hasil tahapan]</p>
+          </div>
+          <div class="card step" data-tone="yel">
+            <span class="step__n">04</span>
+            <h3>[Nama tahapan]</h3>
+            <p>[Jelaskan apa yang dilakukan dan tujuan tahapan ini]</p>
+            <p class="step__out">Luaran: [Hasil tahapan]</p>
+          </div>
+        </div>
+        <p class="thread"><b class="kicker">CATATAN ALUR</b><span>[Ketergantungan atau hal penting yang perlu diperhatikan dalam proses]</span></p>
+      </div>
+      <footer class="slide-footer">
+        <div class="footer__left">
+          <a class="link" href="#slide-2">
+            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-grid"></use></svg></span>
+            <span>Kembali ke menu</span>
+          </a>
+        </div>
+        <div class="footer__count">07 — 10</div>
+        <div class="footer__right">
+          <a class="btn btn--ghost" href="#slide-6">
+            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-arrowLeft"></use></svg></span>
+            <span>Sebelumnya</span>
+          </a>
+          <a class="btn" href="#slide-8">
+            <span>Selanjutnya</span>
+            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-arrowRight"></use></svg></span>
+          </a>
+        </div>
+      </footer>
+    </section>
+
+    <!-- ===== SLIDE 8 · Materi 06 · Data ringkas ===== -->
+    <section class="slide slide--data" id="slide-8" aria-label="Slide 8 dari 10">
+      <header class="slide-header">
+        <div class="brand">
+          <span class="logo"><img src="assets/images/logo-sekolah.png" alt=""></span>
+          <span class="brand__name">SMK TI BALI GLOBAL DENPASAR</span>
+        </div>
+        <div class="room">RUANG PRESENTASI / XI RPL 1</div>
+        <div class="status">
+          <span class="status__dot"></span>
+          <span>Materi 06 / 08</span>
+        </div>
+      </header>
+      <div class="slide__main layout-data">
+        <div class="titlebar">
+          <div class="titlebar__text">
+            <p class="kicker">MATERI 06 / DATA RINGKAS</p>
+            <h2 class="slide__title">[Judul Materi]</h2>
+            <p class="lead">[Kalimat pengantar tentang data, indikator, atau hasil pengamatan]</p>
+          </div>
+          <span class="titlebar__num">06</span>
+        </div>
+        <div class="data__body">
+          <div class="card chart" data-tone="white">
+            <div class="chart__head">
+              <h3>[Judul grafik]</h3>
+              <span>Satuan: [Satuan]</span>
+            </div>
+            <div class="bar">
+              <span>[Kategori A]</span>
+              <div class="bar__track">
+                <div class="bar__fill" data-tone="blue" style="width: 91%;"></div>
+              </div>
+              <b>[Nilai]</b>
+            </div>
+            <div class="bar">
+              <span>[Kategori B]</span>
+              <div class="bar__track">
+                <div class="bar__fill" data-tone="lav" style="width: 69%;"></div>
+              </div>
+              <b>[Nilai]</b>
+            </div>
+            <div class="bar">
+              <span>[Kategori C]</span>
+              <div class="bar__track">
+                <div class="bar__fill" data-tone="sage" style="width: 49%;"></div>
+              </div>
+              <b>[Nilai]</b>
+            </div>
+            <p class="chart__src" style="margin-top: 0px;">Sumber: [Sumber data] · Periode: [Periode]</p>
+            <p class="chart__src" style="margin-top: 0px;">Bentuk grafik adalah placeholder; sesuaikan panjang batang dengan data Anda.</p>
+          </div>
+          <div class="card hl" data-tone="yel">
+            <p class="card-label">ANGKA SOROTAN</p>
+            <p class="hl__value">[Nilai]</p>
+            <p>[Nama indikator utama]</p>
+            <hr>
+            <p class="card-label">MAKNA DATA</p>
+            <p>[Jelaskan pola atau temuan terpenting, tanpa mengulang semua angka]</p>
+          </div>
+        </div>
+      </div>
+      <footer class="slide-footer">
+        <div class="footer__left">
+          <a class="link" href="#slide-2">
+            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-grid"></use></svg></span>
+            <span>Kembali ke menu</span>
+          </a>
+        </div>
+        <div class="footer__count">08 — 10</div>
+        <div class="footer__right">
+          <a class="btn btn--ghost" href="#slide-7">
+            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-arrowLeft"></use></svg></span>
+            <span>Sebelumnya</span>
+          </a>
+          <a class="btn" href="#slide-9">
+            <span>Selanjutnya</span>
+            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-arrowRight"></use></svg></span>
+          </a>
+        </div>
+      </footer>
+    </section>
+
+    <!-- ===== SLIDE 9 · Materi 07 · Rangkuman ===== -->
+    <section class="slide slide--summary" id="slide-9" aria-label="Slide 9 dari 10">
+      <header class="slide-header">
+        <div class="brand">
+          <span class="logo"><img src="assets/images/logo-sekolah.png" alt=""></span>
+          <span class="brand__name">SMK TI BALI GLOBAL DENPASAR</span>
+        </div>
+        <div class="room">RUANG PRESENTASI / XI RPL 1</div>
+        <div class="status">
+          <span class="status__dot"></span>
+          <span>Materi 07 / 08</span>
+        </div>
+      </header>
+      <div class="slide__main layout-summary">
+        <div class="titlebar">
+          <div class="titlebar__text">
+            <p class="kicker">MATERI 07 / RANGKUMAN</p>
+            <h2 class="slide__title">[Judul Materi]</h2>
+            <p class="lead">[Kalimat penghubung dari seluruh pembahasan menuju kesimpulan]</p>
+          </div>
+          <span class="titlebar__num">07</span>
+        </div>
+        <div class="sum__body">
+          <div class="sum__list">
+            <div class="sum__item">
+              <span class="sum__n">01</span>
+              <div>
+                <h3>[Inti pembahasan]</h3>
+                <p>[Satu kalimat yang merangkum hal paling penting]</p>
+              </div>
+            </div>
+            <div class="sum__item">
+              <span class="sum__n">02</span>
+              <div>
+                <h3>[Inti pembahasan]</h3>
+                <p>[Satu kalimat yang merangkum hal paling penting]</p>
+              </div>
+            </div>
+            <div class="sum__item">
+              <span class="sum__n">03</span>
+              <div>
+                <h3>[Inti pembahasan]</h3>
+                <p>[Satu kalimat yang merangkum hal paling penting]</p>
+              </div>
+            </div>
+          </div>
+          <div class="card sum__card" data-tone="lav">
+            <p class="card-label">SATU HAL UNTUK DIINGAT</p>
+            <p class="big">[Kesimpulan utama dari presentasi ini]</p>
+            <p class="note">[Implikasi atau tindak lanjut yang dapat dipertimbangkan]</p>
+          </div>
+        </div>
+      </div>
+      <footer class="slide-footer">
+        <div class="footer__left">
+          <a class="link" href="#slide-2">
+            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-grid"></use></svg></span>
+            <span>Kembali ke menu</span>
+          </a>
+        </div>
+        <div class="footer__count">09 — 10</div>
+        <div class="footer__right">
+          <a class="btn btn--ghost" href="#slide-8">
+            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-arrowLeft"></use></svg></span>
+            <span>Sebelumnya</span>
+          </a>
+          <a class="btn" href="#slide-10">
+            <span>Selanjutnya</span>
+            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-arrowRight"></use></svg></span>
+          </a>
+        </div>
+      </footer>
+    </section>
+
+    <!-- ===== SLIDE 10 · Materi 08 · Penutup ===== -->
+    <section class="slide slide--closing" id="slide-10" aria-label="Slide 10 dari 10">
+      <header class="slide-header">
+        <div class="brand">
+          <span class="logo"><img src="assets/images/logo-sekolah.png" alt=""></span>
+          <span class="brand__name">SMK TI BALI GLOBAL DENPASAR</span>
+        </div>
+        <div class="room">RUANG PRESENTASI / XI RPL 1</div>
+        <div class="status">
+          <span class="status__dot"></span>
+          <span>Materi 08 / 08</span>
+        </div>
+      </header>
+      <div class="slide__main layout-closing">
+        <div class="close__top">
+          <b class="kicker">MATERI 08 / PENUTUP</b>
+          <span>[Judul Materi]</span>
+        </div>
+        <div class="close__mid">
+          <span class="close__bubble">
+            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-chat"></use></svg></span>
+          </span>
+          <h2 class="slide__title close__title">Terima kasih.</h2>
+          <p class="close__sub">Mari berdiskusi.</p>
+          <p class="close__text">[Pertanyaan penutup atau ajakan berdiskusi dengan audiens]</p>
+          <p class="close__who">Brilliant Almighty Nimbuzz Dafolky · XI RPL 1 · 7415</p>
+        </div>
+        <p class="close__ref"><b class="kicker">REFERENSI</b><span>[Sumber utama / tautan referensi presentasi]</span></p>
+      </div>
+      <footer class="slide-footer">
+        <div class="footer__left">
+          <a class="link" href="#slide-2">
+            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-grid"></use></svg></span>
+            <span>Kembali ke menu</span>
+          </a>
+        </div>
+        <div class="footer__count">10 — 10</div>
+        <div class="footer__right">
+          <a class="btn btn--ghost" href="#slide-9">
+            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-arrowLeft"></use></svg></span>
+            <span>Sebelumnya</span>
+          </a>
+          <a class="btn" href="#slide-2">
+            <span>Selesai · ke menu</span>
+            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-arrowRight"></use></svg></span>
+          </a>
+        </div>
+      </footer>
+    </section>
+  </main>
+
+  <button id="fullscreen-btn" class="fs-btn" type="button" aria-pressed="false"
+          aria-label="Masuk layar penuh" title="Masuk layar penuh"
+          data-label-masuk="Masuk layar penuh" data-label-keluar="Keluar layar penuh"
+          data-label-tidak-didukung="Layar penuh tidak didukung browser ini">
+    <svg class="fs-btn__enter" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <svg class="fs-btn__exit" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M9 4v5H4M15 4v5h5M9 20v-5H4M15 20v-5h5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+
+  <script src="js/tambahan.js"></script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+.deck{position:fixed;inset:0;overflow:hidden;background:var(--c-bg)}
+.slide{
+  position:absolute;inset:0;display:flex;flex-direction:column;
+  padding:var(--py) var(--px);
+  background:var(--c-bg);color:var(--c-ink);font-family:var(--font-body);font-size:var(--fs-body);
+  overflow:hidden;visibility:hidden;opacity:0;pointer-events:none;will-change:transform,opacity;
+}
+/* Slide yang tampil = yang ditunjuk alamat (#slide-N). Tanpa alamat, slide 1 yang tampil. */
+.slide:target{visibility:visible;opacity:1;pointer-events:auto;z-index:2;animation:slide-masuk var(--dur) var(--ease)}
+.deck:not(:has(.slide:target)) #slide-1{visibility:visible;opacity:1;pointer-events:auto;z-index:2;animation:slide-masuk var(--dur) var(--ease)}
+.slide__main{flex:1;min-height:0;display:flex;flex-direction:column;padding:clamp(10px,2.6vh,24px) 0;overflow:hidden}
+.slide__title{font-family:var(--font-title);font-weight:400;font-size:var(--fs-h2);line-height:1.02;letter-spacing:-.01em}
+.slide__title:focus{outline:none}
+
+/* Header & footer di setiap slide */
+.slide-header,.slide-footer{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:var(--gap)}
+.slide-header{padding-bottom:clamp(8px,1.8vh,16px);border-bottom:1px solid var(--c-line)}
+.slide-footer{padding-top:clamp(8px,1.8vh,16px);border-top:1px solid var(--c-line)}
+.brand{display:flex;align-items:center;gap:.9em;font-weight:600;font-size:var(--fs-sm)}
+.logo{display:inline-grid;place-items:center;width:calc(var(--u)*2.4);min-width:28px;aspect-ratio:1;border:1px solid var(--c-blue);border-radius:6px;color:var(--c-blue);font-size:8px;overflow:hidden}
+.logo img{width:100%;height:100%;object-fit:contain}
+.room{font-size:var(--fs-xs);color:var(--c-muted);letter-spacing:.02em}
+.status{display:flex;align-items:center;justify-content:flex-end;gap:.6em;font-size:var(--fs-sm);padding-right:calc(var(--u)*4 + 8px)}
+.status__dot{width:6px;height:6px;border-radius:50%;background:var(--c-blue)}
+.footer__left{justify-self:start}
+.footer__right{justify-self:end;display:flex;gap:.7em;align-items:center}
+.footer__text,.footer__count{font-size:var(--fs-xs);color:var(--c-muted)}
